@@ -73,9 +73,13 @@ function syncTasks() {
 }
 
 function renderTasks(tasks) {
+	const tasksFragment = document.createDocumentFragment();
+
 	tasks.forEach((item) => {
-		listElement.append(createItem(item));
+		tasksFragment.append(createItem(item));
 	});
+
+	listElement.append(tasksFragment);
 }
 
 function handleFormSubmit(event) {
@@ -91,6 +95,7 @@ function handleFormSubmit(event) {
 	listElement.prepend(newItem);
 	syncTasks();
 	formElement.reset();
+	inputElement.focus();
 }
 
 items = loadTasks();
